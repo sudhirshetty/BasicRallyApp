@@ -7,7 +7,7 @@
 
     <script type="text/javascript">
         Rally.onReady(function () {
-                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",launch:function(){}});
+                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",launch:function(){console.log("My first Rally App for Features Sudhir WOOT!!!"),this._loadData()},_loadData:function(){var myFeatureStore=Ext.create("Rally.data.wsapi.Store",{model:"PortfolioItem/Feature",autoLoad:!0,listeners:{load:function(myUStoryStore,myStorydata,success){console.log("!!Got User Feature Data",myUStoryStore,myStorydata,success),this._loadGrid(myFeatureStore)},scope:this},fetch:["FormattedID","Name","LastUpdateDate"]})},_loadGrid:function(myFeatureStore){var myFeatureGrid=Ext.create("Rally.ui.grid.Grid",{store:myFeatureStore,columnCfgs:["FormattedID","Name","LastUpdateDate"]});console.log("@@@@@@@@What is this?",this),this.add(myFeatureGrid)}});
 
             Rally.launchApp('CustomApp', {
                 name:"BasicRallyApp",
